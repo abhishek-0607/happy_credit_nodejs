@@ -15,6 +15,7 @@ router.post("/", async (req, res) => {
   }
 });
 
+// get all posts with their comments
 router.get("/", async (req, res) => {
   try {
     const posts = await Post.find().populate("comments");
@@ -23,6 +24,7 @@ router.get("/", async (req, res) => {
     return res.status(500).json({ message: e.message, status: "failed" });
   }
 });
+
 // get post by id;
 router.get("/:id", async (req, res) => {
   try {
@@ -35,8 +37,8 @@ router.get("/:id", async (req, res) => {
     return res.status(500).json({ message: e.message, status: "failed" });
   }
 });
-// post a comment
 
+// post a comment
 router.post("/:id/comment", async (req, res) => {
   try {
     const comment = await Comment.create(req.body);
