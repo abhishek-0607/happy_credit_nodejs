@@ -1,8 +1,8 @@
 const mongoose = require("mongoose");
+require("dotenv").config();
+const url = process.env.URL;
 
 const connect = () => {
-  return mongoose.connect(
-    "mongodb+srv://ab360:mongo2244@cluster0.ntjha.mongodb.net/happycredit"
-  );
+  return mongoose.connect(url);
 };
 module.exports = connect;
