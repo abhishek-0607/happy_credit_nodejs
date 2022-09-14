@@ -1,6 +1,8 @@
 const mongoose = require("mongoose");
 
 const connect = () => {
-  return mongoose.connect("mongodb://127.0.0.1:27017/happycredit");
+  return mongoose.connect(
+    "mongodb+srv://ab360:mongo2244@cluster0.ntjha.mongodb.net/happycredit"
+  );
 };
 module.exports = connect;
