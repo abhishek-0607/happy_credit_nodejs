@@ -51,8 +51,12 @@ router.post("/:id/comment", async (req, res) => {
         comments: [comment],
       },
     });
+    const post = await Post.findById(req.params.id)
+      .populate("comments")
+      .lean()
+      .exec();
 
-    return res.status(201).send(newPost);
+    return res.status(201).send(post);
   } catch (e) {
     return res.status(500).json({ message: e.message, status: "failed" });
   }
